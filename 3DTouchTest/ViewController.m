@@ -93,7 +93,7 @@
         //detail.preferredContentSize=CGSizeMake(300, 300);
         __weak typeof(self) wkSelf=self;
         //------------上拉时的菜单-------------------
-        //置顶及其点击逻辑
+        //置顶及 其点击逻辑 
         UIPreviewAction *topAction=[UIPreviewAction actionWithTitle:@"置顶" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction *action, UIViewController *previewViewController) {
             id obj=[wkSelf.dataArray objectAtIndex:indexPath.row];
             [wkSelf.dataArray removeObject:obj];
