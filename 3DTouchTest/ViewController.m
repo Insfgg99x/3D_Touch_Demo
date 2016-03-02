@@ -94,13 +94,15 @@
         __weak typeof(self) wkSelf=self;
         //------------上拉时的菜单-------------------
         //置顶及其点击逻辑
-        UIPreviewAction *topAction=[UIPreviewAction actionWithTitle:@"置顶" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-            [wkSelf.dataArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        UIPreviewAction *topAction=[UIPreviewAction actionWithTitle:@"置顶" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction *action, UIViewController *previewViewController) {
+            id obj=[wkSelf.dataArray objectAtIndex:indexPath.row];
+            [wkSelf.dataArray removeObject:obj];
+            [wkSelf.dataArray insertObject:obj atIndex:0];
             [wkSelf.tbVew reloadData];
             [wkSelf showAlert:@"提示" body:@"已置顶"];
         }];
         //删除及其点击逻辑
-        UIPreviewAction *deleteAction=[UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        UIPreviewAction *deleteAction=[UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction *action, UIViewController *previewViewController) {
             [wkSelf.dataArray removeObjectAtIndex:indexPath.row];
             [wkSelf.tbVew reloadData];
             [wkSelf showAlert:@"警告" body:@"已删除"];
